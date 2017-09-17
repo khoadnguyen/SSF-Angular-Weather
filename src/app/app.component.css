@@ -1,0 +1,31 @@
+
+.nav-icon {
+	margin-right: 20px;
+	color: white;
+}
+
+.toolbar-location {
+	margin: 0 1rem;
+}
+
+.flex-space {
+	flex: 1 1 auto;
+}
+.icons a {
+	color: white;
+}
+.icons a:hover {
+	color: #00BCD4;
+}
+
+.icons a + a {
+	margin-left: 10px;
+}
+
+md-sidenav {
+	width: 450px;
+}
+
+.mat-list-text, .mat-list-text a {
+	outline: none;
+}
