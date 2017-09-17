@@ -13,13 +13,13 @@ import { MdListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { ToolbarComponent } from './header/toolbar/toolbar.component';
+import { MainNavComponent } from './header/main-nav/main-nav.component';
 import { ForecastDashboardComponent } from './forecast-dashboard/forecast-dashboard.component';
-import { ForecastCardComponent } from './forecast-card/forecast-card.component';
+import { ForecastCardComponent } from './forecast-dashboard/forecast-card/forecast-card.component';
 import { DayCardComponent } from './day-card/day-card.component';
-import { DayCardFeatureComponent } from './day-card-feature/day-card-feature.component';
-import { DayCardDetailsComponent } from './day-card-details/day-card-details.component';
+import { DayCardFeatureComponent } from './day-card/day-card-feature/day-card-feature.component';
+import { DayCardDetailsComponent } from './day-card/day-card-details/day-card-details.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
