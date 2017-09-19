@@ -39,18 +39,23 @@ const mockData = [
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ WeatherService ]
 })
 export class AppComponent implements OnInit {
   title = 'Khoa\'s Weather App';
-  weatherData = [];
+  weatherData;
+  values;
+  anyErrors;
+  finished;
 
   constructor(public weather$: WeatherService){
-    //console.log(this.weather$.getData());
   }
 
   getWeather(): void {
-      this.weatherData = this.weather$.getData();
+      this.weatherData = this.weather$.getData().subscribe(
+          function(response) { console.log("Successfull response:"); console.log(response.current_observation); return response.current_observation },
+          function(error) { console.log("An error happened:" + error)},
+          function() { console.log("The subscription completed.")})
+      console.log('This data:',this.weatherData);
   }
 
   ngOnInit(): void {
