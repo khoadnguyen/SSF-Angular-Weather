@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from "@angular/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdGridListModule } from '@angular/material';
 import { MdToolbarModule } from "@angular/material";
@@ -22,6 +23,9 @@ import { DayCardFeatureComponent } from './day-card/day-card-feature/day-card-fe
 import { DayCardDetailsComponent } from './day-card/day-card-details/day-card-details.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { WeatherService} from "./weather.service";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     MdGridListModule,
     MdToolbarModule,
@@ -48,7 +53,7 @@ import { FooterComponent } from './footer/footer.component';
     MdButtonModule,
     MdListModule
   ],
-  providers: [],
+  providers: [ WeatherService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
