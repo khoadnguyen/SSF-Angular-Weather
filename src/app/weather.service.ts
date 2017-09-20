@@ -23,6 +23,7 @@ export class WeatherService {
   getData(){
       return this.http.get(this.url)
           .map(res => res.json());
+
   }
 
 }
