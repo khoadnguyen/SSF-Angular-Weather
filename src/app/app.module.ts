@@ -11,6 +11,8 @@ import { MdSidenavModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MdListModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule, NgModel } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -51,7 +53,10 @@ import { WeatherService} from "./weather.service";
     MdSidenavModule,
     MdCardModule,
     MdButtonModule,
-    MdListModule
+    MdListModule,
+    MdInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ WeatherService ],
   bootstrap: [AppComponent]

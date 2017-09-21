@@ -7,7 +7,8 @@ import {Observable} from "rxjs/Observable";
 export class WeatherService {
   foo: string = 'Hello this is Weather!';
   apiKey: string = "7442d6907c24c040";
-  url: string = "http://api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json";
+  // url: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json";
+  url: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/";
   results: any;
 
   constructor(private http: Http) { }
@@ -20,10 +21,9 @@ export class WeatherService {
   //     });
   // }
 
-  getData(){
-      return this.http.get(this.url)
+  getData(endpoint){
+      return this.http.get(this.url + endpoint + ".json")
           .map(res => res.json());
-
   }
 
 }

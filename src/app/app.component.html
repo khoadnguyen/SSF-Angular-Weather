@@ -4,12 +4,29 @@
   <app-header></app-header>
   <div class="main-content">
       <h1>Welcome to {{title}}!</h1>
-      <md-card >
-        <p>{{weatherData.display_location.full}}</p>
-        <p>Currently: {{weatherData.feelslike_string}}</p>
-        <p>{{weatherData.observation_time}}</p>
+      <md-card>
+          <h3>Search:</h3>
+          <form class="example-form">
+              <md-form-field class="example-full-width">
+                  <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
+                  <md-hint align="start"><strong>Enter a US City</strong> </md-hint>
+              </md-form-field>
+          </form>
       </md-card>
+      <md-card *ngIf="result">
+        <p *ngIf="result">{{result.weather}}</p>
+        <p *ngIf="result">Currently: {{result.feelslike_string}}</p>
+        <p *ngIf="result">{{result.observation_time}}</p>
+      </md-card>
+      <md-card *ngIf="error">
+          <p *ngIf="error">{{error}}</p>
+      </md-card>
+      <md-card *ngIf="queryResults">
+          <p *ngIf="queryResults">{{queryResults}}</p>
+      </md-card>
+
       <app-forecast-dashboard>
+
       </app-forecast-dashboard>
   </div>
 </md-sidenav-container>
