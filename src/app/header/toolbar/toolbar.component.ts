@@ -9,7 +9,11 @@ export class ToolbarComponent implements OnInit {
   location = 'San Diego';
 
   constructor(){}
-
+  
+  toggle(input) {
+      console.log(input);
+  }
+    
   ngOnInit() {
   }
 

@@ -3,6 +3,9 @@
 <!--</p>-->
 
 <md-toolbar color="primary">
+    <span md-mini-fab (click)="toggle($event)">
+        <md-icon>menu</md-icon>
+    </span>
     <span>
         <span class="toolbar-location">{{location}}</span>
     </span>
