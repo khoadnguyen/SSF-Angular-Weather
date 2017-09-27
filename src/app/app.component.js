@@ -6,56 +6,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
-var mockData = [
-    {
-        "display_location": {
-            "full": "San Francisco, CA"
-        },
-        "temp_f": 66.3,
-        "weather": "Partly Cloudy",
-        "relative_humidity": "65%"
-    },
-    {
-        "display_location": {
-            "full": "San Diego, CA"
-        },
-        "temp_f": 80,
-        "weather": "Sunny",
-        "relative_humidity": "30%"
-    },
-    {
-        "display_location": {
-            "full": "Seattle, WA"
-        },
-        "temp_f": 50,
-        "weather": "Rain",
-        "relative_humidity": "100%"
-    }, {
-        "display_location": {
-            "full": "Las Vegas, NV"
-        },
-        "temp_f": 105,
-        "weather": "Hot",
-        "relative_humidity": "5%"
-    }
-];
 var AppComponent = (function () {
     function AppComponent(weather$) {
         this.weather$ = weather$;
         this.title = 'Khoa\'s Weather App';
         this.weatherData = {};
+        this.city = "";
     }
     AppComponent.prototype.getWeather = function () {
+        // this.weather$.getData().subscribe(res => {
+        //     console.log(res);
+        //     this.weatherData = res.current_observation;
+        //     console.log("after res ", this.weatherData)
+        // });
+    };
+    AppComponent.prototype.search = function (value) {
         var _this = this;
-        this.weather$.getData().subscribe(function (res) {
-            console.log(res);
-            _this.weatherData = res.current_observation;
-            console.log("after res", _this.weatherData);
-        });
+        this.city = value;
+        console.log("I am searching for:", this.city);
+        this.weather$.getData(value).subscribe(function (data) {
+            if (data.response.hasOwnProperty("error")) {
+                _this.error = "This query could not be matched.";
+                console.log("This query could not be matched.");
+            }
+            else if (data.response.hasOwnProperty("results")) {
+                _this.queryResults = "We could not find your city, but these results match.";
+                console.log("These match");
+            }
+            else {
+                _this.result = data.current_observation;
+            }
+            console.log("Response: ", data);
+        }, function (error) { return console.log("Error: ", error); });
     };
     AppComponent.prototype.ngOnInit = function () {
+        this.weather$.pushData()
+            .subscribe(function (res) {
+            console.log(res);
+        });
         this.getWeather();
-        console.log('Weather Data: ', this.weatherData);
     };
     AppComponent = __decorate([
         core_1.Component({

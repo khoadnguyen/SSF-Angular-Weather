@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   resultsArray: any;
 
   constructor(public weather$: WeatherService){
+      
   }
 
   getWeather(): void {
@@ -47,6 +48,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.weather$.pushData()
+        .subscribe( res => {
+            console.log(res);
+        });
       this.getWeather();
   }
 }

@@ -12,7 +12,9 @@ var WeatherService = (function () {
         this.http = http;
         this.foo = 'Hello this is Weather!';
         this.apiKey = "7442d6907c24c040";
-        this.url = "http://api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json";
+        // url: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json";
+        this.url = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/";
+        this.pushUrl = "https://khoa-fall-2017-phortonssf.c9users.io:8081/postit";
     }
     // getData(): any {
     //   this.http.get('http://api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json')
@@ -21,8 +23,13 @@ var WeatherService = (function () {
     //       console.log(resp["_body"]);
     //     });
     // }
-    WeatherService.prototype.getData = function () {
-        return this.http.get(this.url)
+    WeatherService.prototype.getData = function (endpoint) {
+        return this.http.get(this.url + endpoint + ".json")
+            .map(function (res) { return res.json(); });
+    };
+    WeatherService.prototype.pushData = function () {
+        console.log("Poop");
+        return this.http.post(this.pushUrl, { "test": 10 })
             .map(function (res) { return res.json(); });
     };
     WeatherService = __decorate([
