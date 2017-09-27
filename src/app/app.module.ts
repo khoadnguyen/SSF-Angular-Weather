@@ -2,16 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdGridListModule } from '@angular/material';
-import { MdToolbarModule } from "@angular/material";
-import { MdMenuModule } from "@angular/material";
-import { MdIconModule } from '@angular/material';
-import { MdTooltipModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
-import { MdListModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
+import { MdGridListModule, MdToolbarModule, MdMenuModule, MdIconModule, MdTooltipModule, MdSidenavModule, MdCardModule, MdButtonModule, MdListModule, MdInputModule, MatTabsModule } from '@angular/material';
+
 import { FormsModule, ReactiveFormsModule, NgModel } from "@angular/forms";
 
 import { AppComponent } from './app.component';
@@ -56,6 +48,7 @@ import { WeatherService} from "./weather.service";
     MdListModule,
     MdInputModule,
     FormsModule,
+    MatTabsModule,
     ReactiveFormsModule
   ],
   providers: [ WeatherService ],

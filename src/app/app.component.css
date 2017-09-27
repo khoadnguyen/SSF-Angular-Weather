@@ -7,6 +7,8 @@
 .main-content {
 	/* autoprefixer: off */
 	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 2rem 3rem;
 	align-content: start;
 	/* autoprefixer: off */
 	height: 100vh;
@@ -16,25 +18,18 @@
 }
 
 .left-col {
-	/* autoprefixer: off */
-	grid-column: 1;
-	grid-row: 2/5;
-	/* autoprefixer: off */
 	background-color: aqua;
 }
 
 .main-col {
-	/* autoprefixer: off */
-	grid-column: 2;
-	grid-row: 2/5;
-	/* autoprefixer: off */
 	background-color: aquamarine;
 }
 
 .right-col {
-	/* autoprefixer: off */
-	grid-column: 3;
-	grid-row: 2/5;
-	/* autoprefixer: off */
 	background-color: lavender;
+}
+
+
+.tab-content {
+	padding: 2.5rem 1rem;
 }

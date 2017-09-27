@@ -9,6 +9,7 @@ import { WeatherService } from "./weather.service";
 export class AppComponent implements OnInit {
   title: string = 'Khoa\'s Weather App';
   weatherData = {};
+  location = {};
   city: string;
   result: any;
   error: string;
@@ -16,7 +17,6 @@ export class AppComponent implements OnInit {
   resultsArray: any;
 
   constructor(public weather$: WeatherService){
-      
   }
 
   // getWeather(): void {
@@ -53,5 +53,11 @@ export class AppComponent implements OnInit {
       //       console.log(res);
       //   });
       //this.getWeather();
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(position => {
+              this.location = position.coords;
+              console.log(position.coords);
+          });
+      }
   }
 }

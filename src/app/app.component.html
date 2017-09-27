@@ -7,7 +7,19 @@
         <section class="left-col">
             <md-card class="col-card">
                 <md-card-content>
-                    <h2>Left Column:</h2>
+                    <h2>Learn More</h2>
+                    <md-tab-group>
+                        <md-tab label="About">
+                            <div class="tab-content">
+                                <p>Curabitur aliquet volutpat lorem vel elementum. Morbi eget maximus neque, mollis venenatis velit. Aenean et rhoncus nunc. Aenean nisi justo, facilisis non arcu volutpat, tempus bibendum arcu.</p>
+                            </div>
+                        </md-tab>
+                        <md-tab label="Events">
+                            <div class="tab-content">
+                                <p>Curabitur nunc nulla, tristique eu neque aliquet, placerat euismod erat. Donec a sapien in turpis dignissim euismod. Vestibulum elementum interdum tellus. Cras tristique nibh ac magna maximus, sit amet consequat neque lacinia. Curabitur eu erat imperdiet dolor aliquam vestibulum molestie vel lacus.</p>
+                            </div>
+                        </md-tab>
+                    </md-tab-group>
                 </md-card-content>
             </md-card>
         </section>
@@ -30,13 +42,17 @@
                     </md-card>
                     <app-forecast-dashboard></app-forecast-dashboard>
                 </md-card-content>
+                <md-card-actions>
+                    <button md-button>REMOVE</button>
+                    <button md-button>CLEAR</button>
+                </md-card-actions>
             </md-card>
         </section>
 
         <section class="right-col">
             <md-card class="col-card">
                 <md-card-content>
-                    <h2>Search:</h2>
+                    <h2>Search</h2>
                     <form class="example-form">
                         <md-form-field class="example-full-width">
                             <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
@@ -46,5 +62,6 @@
                 </md-card-content>
             </md-card>
         </section>
+
     </div>
 </md-sidenav-container>
