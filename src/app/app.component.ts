@@ -9,7 +9,7 @@ import { WeatherService } from "./weather.service";
 export class AppComponent implements OnInit {
   title: string = 'Khoa\'s Weather App';
   weatherData = {};
-  city: string = "";
+  city: string;
   result: any;
   error: string;
   queryResults: string;
@@ -19,13 +19,13 @@ export class AppComponent implements OnInit {
       
   }
 
-  getWeather(): void {
-      // this.weather$.getData().subscribe(res => {
-      //     console.log(res);
-      //     this.weatherData = res.current_observation;
-      //     console.log("after res ", this.weatherData)
-      // });
-  }
+  // getWeather(): void {
+  //     this.weather$.getData().subscribe(res => {
+  //         console.log(res);
+  //         this.weatherData = res.current_observation;
+  //         console.log("after res ", this.weatherData);
+  //     });
+  // }
 
   search(value: string) {
     this.city = value;
@@ -48,10 +48,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.weather$.pushData()
-        .subscribe( res => {
-            console.log(res);
-        });
-      this.getWeather();
+      // this.weather$.pushData()
+      //   .subscribe( res => {
+      //       console.log(res);
+      //   });
+      //this.getWeather();
   }
 }

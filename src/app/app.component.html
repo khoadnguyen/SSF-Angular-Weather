@@ -3,35 +3,48 @@
 <md-sidenav-container>
     <app-header></app-header>
     <div class="main-content">
-        <h1>Welcome to {{title}}!</h1>
-        <md-card>
-            <h3>Search:</h3>
-            <form class="example-form">
-                <md-form-field class="example-full-width">
-                    <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
-                    <md-hint align="start"><strong>Enter a US City</strong> </md-hint>
-                </md-form-field>
-            </form>
-        </md-card>
 
-        <div class="lessons-list" *ngIf="lessons else loading">
-            ...
-        </div>
+        <section class="left-col">
+            <md-card class="col-card">
+                <md-card-content>
+                    <h2>Left Column:</h2>
+                </md-card-content>
+            </md-card>
+        </section>
 
-        <md-card *ngIf="result">
-            <p *ngIf="result">{{result.weather}}</p>
-            <p *ngIf="result">Currently: {{result.feelslike_string}}</p>
-            <p *ngIf="result">{{result.observation_time}}</p>
-        </md-card>
-        <md-card *ngIf="error">
-            <p *ngIf="error">{{error}}</p>
-        </md-card>
-        <md-card *ngIf="queryResults">
-            <p *ngIf="queryResults">{{queryResults}}</p>
-        </md-card>
+        <section class="main-col">
+            <md-card class="col-card">
+                <md-card-content>
+                    <h1>Welcome to {{title}}!</h1>
+                    <md-card *ngIf="result">
+                        <h3 *ngIf="result">{{result.display_location.city}}</h3>
+                        <p *ngIf="result">{{result.weather}}</p>
+                        <p *ngIf="result">Currently: {{result.feelslike_string}}</p>
+                        <p *ngIf="result">{{result.observation_time}}</p>
+                    </md-card>
+                    <md-card *ngIf="error">
+                        <p *ngIf="error">{{error}}</p>
+                    </md-card>
+                    <md-card *ngIf="queryResults">
+                        <p *ngIf="queryResults">{{queryResults}}</p>
+                    </md-card>
+                    <app-forecast-dashboard></app-forecast-dashboard>
+                </md-card-content>
+            </md-card>
+        </section>
 
-        <app-forecast-dashboard>
-
-        </app-forecast-dashboard>
+        <section class="right-col">
+            <md-card class="col-card">
+                <md-card-content>
+                    <h2>Search:</h2>
+                    <form class="example-form">
+                        <md-form-field class="example-full-width">
+                            <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
+                            <md-hint align="start"><strong>Enter a US City</strong> </md-hint>
+                        </md-form-field>
+                    </form>
+                </md-card-content>
+            </md-card>
+        </section>
     </div>
 </md-sidenav-container>
