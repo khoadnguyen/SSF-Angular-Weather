@@ -8,15 +8,18 @@ import { WeatherService } from "./weather.service";
 })
 export class AppComponent implements OnInit {
   title: string = 'Khoa\'s Weather App';
-  weatherData = {};
-  location = {};
-  city: string;
-  result: any;
-  error: string;
-  queryResults: string;
-  resultsArray: any;
+  location: any;
+  currentLocation: any;
 
   constructor(public weather$: WeatherService){
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(position => {
+              weather$.getLocation(position.coords.latitude, position.coords.longitude)
+                  .subscribe(res => {
+                      this.currentLocation = res.location;
+                  })
+          })
+      }
   }
 
   // getWeather(): void {
@@ -27,25 +30,7 @@ export class AppComponent implements OnInit {
   //     });
   // }
 
-  search(value: string) {
-    this.city = value;
-    console.log("I am searching for:", this.city);
-    this.weather$.getData(value).subscribe(
-        data => {
-            if(data.response.hasOwnProperty("error")) {
-                this.error = "This query could not be matched.";
-                console.log("This query could not be matched.")
-            } else if (data.response.hasOwnProperty("results")) {
-                this.queryResults = "We could not find your city, but these results match.";
-                console.log("These match")
-            } else {
-                this.result = data.current_observation;
-            }
-            console.log("Response: ", data)
-        },
-        error => console.log("Error: ", error)
-    );
-  }
+
 
   ngOnInit(): void {
       // this.weather$.pushData()
@@ -53,11 +38,5 @@ export class AppComponent implements OnInit {
       //       console.log(res);
       //   });
       //this.getWeather();
-      if(navigator.geolocation){
-          navigator.geolocation.getCurrentPosition(position => {
-              this.location = position.coords;
-              console.log(position.coords);
-          });
-      }
   }
 }

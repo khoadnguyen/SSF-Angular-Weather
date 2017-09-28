@@ -7,7 +7,7 @@
         <section class="left-col">
             <md-card class="col-card">
                 <md-card-content>
-                    <h2>Learn More</h2>
+                    <h2>Info</h2>
                     <md-tab-group>
                         <md-tab label="About">
                             <div class="tab-content">
@@ -28,6 +28,7 @@
             <md-card class="col-card">
                 <md-card-content>
                     <h1>Welcome to {{title}}!</h1>
+                    <p *ngIf="currentLocation">It looks like you're currently in: {{currentLocation.city}}, {{currentLocation.state}}</p>
                     <md-card *ngIf="result">
                         <h3 *ngIf="result">{{result.display_location.city}}</h3>
                         <p *ngIf="result">{{result.weather}}</p>
@@ -52,13 +53,7 @@
         <section class="right-col">
             <md-card class="col-card">
                 <md-card-content>
-                    <h2>Search</h2>
-                    <form class="example-form">
-                        <md-form-field class="example-full-width">
-                            <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
-                            <md-hint align="start"><strong>Enter a US City</strong> </md-hint>
-                        </md-form-field>
-                    </form>
+                    <app-search></app-search>
                 </md-card-content>
             </md-card>
         </section>

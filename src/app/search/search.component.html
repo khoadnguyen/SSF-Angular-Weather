@@ -1,0 +1,11 @@
+<h2>Search</h2>
+<form class="example-form">
+  <md-form-field class="example-full-width">
+    <input mdInput [(ngModel)]="city" [ngModelOptions]="{standalone: true}" #box (keyup.enter)="search(box.value)" placeholder="City">
+    <md-hint align="start"><strong>Enter a US City</strong> </md-hint>
+  </md-form-field>
+  <md-select placeholder="State">
+    <md-option *ngFor="let state of statesArray" [value]="state.abbreviation">{{ state.abbreviation }}</md-option>
+  </md-select>
+  <span class="button"><button md-raised-button (click)="search(box.value)">Add City</button></span>
+</form>

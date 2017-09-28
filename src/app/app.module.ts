@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdGridListModule, MdToolbarModule, MdMenuModule, MdIconModule, MdTooltipModule, MdSidenavModule, MdCardModule, MdButtonModule, MdListModule, MdInputModule, MatTabsModule } from '@angular/material';
+import { MdGridListModule, MdToolbarModule, MdMenuModule, MdIconModule, MdTooltipModule, MdSidenavModule, MdCardModule, MdButtonModule, MdListModule, MdInputModule, MdTabsModule, MdSelectModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule, NgModel } from "@angular/forms";
 
@@ -18,6 +18,7 @@ import { DayCardDetailsComponent } from './day-card/day-card-details/day-card-de
 import { FooterComponent } from './footer/footer.component';
 
 import { WeatherService} from "./weather.service";
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { WeatherService} from "./weather.service";
     DayCardComponent,
     DayCardFeatureComponent,
     DayCardDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -48,10 +50,11 @@ import { WeatherService} from "./weather.service";
     MdListModule,
     MdInputModule,
     FormsModule,
-    MatTabsModule,
+    MdTabsModule,
+    MdSelectModule,
     ReactiveFormsModule
   ],
   providers: [ WeatherService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

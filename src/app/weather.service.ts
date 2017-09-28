@@ -8,7 +8,8 @@ export class WeatherService {
   foo: string = 'Hello this is Weather!';
   apiKey: string = "7442d6907c24c040";
   // url: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/San_Francisco.json";
-  url: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/";
+  cityurl: string = "//api.wunderground.com/api/7442d6907c24c040/conditions/q/CA/";
+  locationurl: string = "//api.wunderground.com/api/7442d6907c24c040/geolookup/q/";
   results: any;
   pushUrl: string = "https://khoa-fall-2017-phortonssf.c9users.io:8081/postit"; 
 
@@ -22,8 +23,13 @@ export class WeatherService {
   //     });
   // }
 
+  getLocation(long, lat){
+      return this.http.get(this.locationurl + long + "," + lat + ".json")
+          .map(res => res.json());
+  }
+
   getData(endpoint){
-      return this.http.get(this.url + endpoint + ".json")
+      return this.http.get(this.cityurl + endpoint + ".json")
           .map(res => res.json());
   }
 
